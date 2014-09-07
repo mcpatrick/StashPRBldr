@@ -12,4 +12,7 @@
   <f:entry title="Name" field="name">
     <f:textbox />
   </f:entry>
+    <f:entry title="Repo Url" field="repo_url">
+        <f:textbox />
+    </f:entry>
 </j:jelly>
