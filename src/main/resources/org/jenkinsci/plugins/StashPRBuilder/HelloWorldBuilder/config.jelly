@@ -12,7 +12,11 @@
   <f:entry title="Name" field="name">
     <f:textbox />
   </f:entry>
-    <f:entry title="Repo Url" field="repo_url">
+  <!--
+      Creates a URL field that shows the value of the "repourl" property.
+      When submitted, it will be passed to the corresponding constructor parameter.
+    -->
+    <f:entry title="Repourl" field="repourl">
         <f:textbox />
     </f:entry>
 </j:jelly>

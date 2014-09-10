@@ -35,11 +35,13 @@ import java.io.IOException;
 public class HelloWorldBuilder extends Builder {
 
     private final String name;
+    private final String repourl;
 
     // Fields in config.jelly must match the parameter names in the "DataBoundConstructor"
     @DataBoundConstructor
-    public HelloWorldBuilder(String name) {
+    public HelloWorldBuilder(String name, String repourl) {
         this.name = name;
+        this.repourl = repourl;
     }
 
     /**
@@ -47,6 +49,9 @@ public class HelloWorldBuilder extends Builder {
      */
     public String getName() {
         return name;
+    }
+    public String getRepourl() {
+        return repourl;
     }
 
     @Override
@@ -115,8 +120,31 @@ public class HelloWorldBuilder extends Builder {
                 return FormValidation.error("Please set a name");
             if (value.length() < 4)
                 return FormValidation.warning("Isn't the name too short?");
+
             return FormValidation.ok();
         }
+
+        /**
+         * Performs on-the-fly validation of the form field 'name'.
+         *
+         * @param value
+         *      This parameter receives the value that the user has typed.
+         * @return
+         *      Indicates the outcome of the validation. This is sent to the browser.
+         *      <p>
+         *      Note that returning {@link FormValidation#error(String)} does not
+         *      prevent the form from being saved. It just means that a message
+         *      will be displayed to the user.
+         */
+        public FormValidation doCheckRepourl(@QueryParameter String value)
+                throws IOException, ServletException {
+            if (value.length() == 0)
+                return FormValidation.error("Please set a url");
+            if (value.length() < 5)
+                return FormValidation.warning("Isn't the name too short?");
+            return FormValidation.ok();
+        }
+
 
         public boolean isApplicable(Class<? extends AbstractProject> aClass) {
             // Indicates that this builder can be used with all kinds of project types 
