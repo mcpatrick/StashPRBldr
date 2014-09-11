@@ -3,6 +3,8 @@ StashPRBldr
 
 Stash Pull Request Builder plugin for Jenkins
 
+When done (we are just getting started on it) this plugin will be used to trigger builds when Stash pull requests are created or when the source branch for the pull request changes.  Optionally, jobs may be triggered when the target directory for the pull request changes.  Futher options will make it possible to a) confirm that the source branch is synced up with the target branch before building and, b) merge or approve the pull request if the build is successful.
+
 ### Configuration options
 
 * Build Triggers
