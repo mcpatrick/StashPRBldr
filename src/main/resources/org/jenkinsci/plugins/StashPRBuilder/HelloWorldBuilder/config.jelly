@@ -19,4 +19,13 @@
     <f:entry title="Repourl" field="repourl">
         <f:textbox />
     </f:entry>
+
+    <!--
+        Creates a checkbox  field.
+        When submitted, it will be passed to the corresponding constructor parameter.
+      -->
+      <f:entry title="Checkbox1" field="checkbox1">
+        <f:checkbox />
+      </f:entry>
+
 </j:jelly>

@@ -14,6 +14,7 @@ import org.kohsuke.stapler.QueryParameter;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.awt.Checkbox;
 
 /**
  * Sample {@link Builder}.
@@ -35,13 +36,16 @@ import java.io.IOException;
 public class HelloWorldBuilder extends Builder {
 
     private final String name;
+
     private final String repourl;
+    private final boolean checkbox1;
 
     // Fields in config.jelly must match the parameter names in the "DataBoundConstructor"
     @DataBoundConstructor
-    public HelloWorldBuilder(String name, String repourl) {
+    public HelloWorldBuilder(String name, String repourl, boolean checkbox1) {
         this.name = name;
         this.repourl = repourl;
+        this.checkbox1 = checkbox1;
     }
 
     /**
@@ -53,6 +57,7 @@ public class HelloWorldBuilder extends Builder {
     public String getRepourl() {
         return repourl;
     }
+    public boolean getCheckbox1() { return checkbox1; }
 
     @Override
     public boolean perform(AbstractBuild build, Launcher launcher, BuildListener listener) {
@@ -61,9 +66,9 @@ public class HelloWorldBuilder extends Builder {
 
         // This also shows how you can consult the global configuration of the builder
         if (getDescriptor().getUseFrench())
-            listener.getLogger().println("Bonjour, "+name+"!");
+            listener.getLogger().println("Bonjour+checkbox1");
         else
-            listener.getLogger().println("Hello, "+name+"!");
+            listener.getLogger().format("hello %b", checkbox1)    ;    // println("Hello" +"%b",checkbox1.getState());
         return true;
     }
 
@@ -144,6 +149,29 @@ public class HelloWorldBuilder extends Builder {
                 return FormValidation.warning("Isn't the name too short?");
             return FormValidation.ok();
         }
+
+
+        /**
+         * Performs on-the-fly validation of the form field 'checkbox1'.
+         *
+         * @param value
+         *      This parameter receives the value that the user has typed.
+         * @return
+         *      Indicates the outcome of the validation. This is sent to the browser.
+         *      <p>
+         *      Note that returning {@link FormValidation#error(String)} does not
+         *      prevent the form from being saved. It just means that a message
+         *      will be displayed to the user.
+         */
+        public FormValidation doCheckCheckbox1(@QueryParameter boolean value)
+                throws IOException, ServletException {
+         //   if (value.length() == 0)
+           //     return FormValidation.error("Please set a url");
+            //if (value.length() < 5)
+             //   return FormValidation.warning("Isn't the name too short?");
+            return FormValidation.ok();
+        }
+
 
 
         public boolean isApplicable(Class<? extends AbstractProject> aClass) {
