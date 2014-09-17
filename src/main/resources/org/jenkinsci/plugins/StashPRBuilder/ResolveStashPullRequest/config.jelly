@@ -1,0 +1,28 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+
+    <!--
+           Creates a checkbox  field 'Merge/Deny pull request'
+         -->
+         <f:entry title="Mergedeny" field="mergedeny">
+           <f:checkbox />
+         </f:entry>
+
+ <!--
+        Creates a checkbox  field 'Approvedecline'
+      -->
+      <f:entry title="Approvedecline" field="approvedecline">
+        <f:checkbox />
+      </f:entry>
+
+<!--
+        Creates a checkbox  field 'ffonlymerge'
+      -->
+      <f:entry title="Ffonlymerge" field="ffonlymerge">
+        <f:checkbox />
+      </f:entry>
+
+
+
+
+</j:jelly>
