@@ -1,0 +1,21 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+
+    <!--
+           Creates a checkbox  field 'Rebase instead of merge'
+         -->
+         <f:entry title="Rebase" field="rebase">
+           <f:checkbox />
+         </f:entry>
+
+ <!--
+        Creates a checkbox  field 'Push'
+      -->
+      <f:entry title="Push" field="push">
+        <f:checkbox />
+      </f:entry>
+
+
+
+
+</j:jelly>
