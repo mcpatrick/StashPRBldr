@@ -1,53 +1,23 @@
-package org.jenkinsci.plugins.StashPRBuilder;
-import hudson.EnvVars;
+package org.jenkinsci.plugins.stashprbuilder;
 import hudson.Extension;
 import hudson.FilePath;
-import hudson.Launcher;
-import hudson.Util;
-import hudson.model.Cause;
-import hudson.model.Hudson;
-import hudson.model.ParameterDefinition;
-import hudson.model.ParametersDefinitionProperty;
-import hudson.model.PasswordParameterValue;
 import hudson.model.Project;
-import hudson.model.StringParameterValue;
 import hudson.model.Item;
-import hudson.model.TaskListener;
 import hudson.model.TopLevelItem;
-import hudson.tasks.Messages;
 import hudson.triggers.Trigger;
 import hudson.triggers.TriggerDescriptor;
-import hudson.util.LogTaskListener;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
-import hudson.Extension;
-import hudson.triggers.Trigger;
 import antlr.ANTLRException;
-import hudson.model.BuildListener;
 //import com.coravy.hudson.plugins.github.GithubProjectProperty;
-import com.google.common.annotations.VisibleForTesting;
 
-import hudson.Extension;
-import hudson.Util;
-import hudson.model.*;
-import hudson.model.StringParameterValue;
-import hudson.model.queue.QueueTaskFuture;
 //import hudson.plugins.git.RevisionParameterAction;
 //import hudson.plugins.git.util.BuildData;
-import hudson.triggers.Trigger;
-import hudson.triggers.TriggerDescriptor;
-import hudson.util.FormValidation;
-import hudson.util.LogTaskListener;
-import net.sf.json.JSONObject;
 /*
 import org.kohsuke.github.GHAuthorization;
 import org.kohsuke.github.GHCommitState;
@@ -56,15 +26,6 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 */
-import javax.servlet.ServletException;
-
-import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 
 /**

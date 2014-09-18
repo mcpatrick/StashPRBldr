@@ -1,4 +1,4 @@
-package org.jenkinsci.plugins.StashPRBuilder;
+package org.jenkinsci.plugins.stashprbuilder;
 import hudson.Launcher;
 import hudson.Extension;
 import hudson.util.FormValidation;
@@ -14,7 +14,6 @@ import org.kohsuke.stapler.QueryParameter;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.awt.Checkbox;
 
 
 // Todo : Need clean up
