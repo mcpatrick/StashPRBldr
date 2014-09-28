@@ -23,25 +23,28 @@ import java.io.IOException;
 public class MergePRTgtIntoSrc extends Builder {
 
 
-    private final boolean rebase;
-    private final boolean push;
+    private final String rebasevalue;
+    private final String pushvalue;
+  //  private String type;
 
     @DataBoundConstructor
-    public MergePRTgtIntoSrc(boolean rebase, boolean push) {
-        this.rebase = rebase;
-        this.push = push;
+    public MergePRTgtIntoSrc(String rebasevalue, String pushvalue) { //boolean rebase, boolean push) {
+        this.rebasevalue = rebasevalue;
+        this.pushvalue = pushvalue;
+    //    this.type = type;
 
     }
 
 
 
-    public boolean getRebase() { return rebase; }
-    public boolean getPush() { return push; }
+    public String getRebasevalue() { return rebasevalue; }
+    public String getPushvalue() { return pushvalue; }
+   // public String getType() { return type; }
 
     @Override
     public boolean perform(AbstractBuild build, Launcher launcher, BuildListener listener) {
 
-            listener.getLogger().format("hello %b %b", rebase, push)    ;
+      //      listener.getLogger().format("hello %b %b", rebase, push)    ;
         return true;
     }
 
@@ -60,17 +63,17 @@ public class MergePRTgtIntoSrc extends Builder {
 
 
 
-        public FormValidation doCheckRebase(@QueryParameter boolean value)
+        public FormValidation doCheckRebasevalue(@QueryParameter String value)
                 throws IOException, ServletException {
 
             return FormValidation.ok();
-        }
+       }
 
-        public FormValidation doCheckPush(@QueryParameter boolean value)
-                throws IOException, ServletException {
+        public FormValidation doCheckPushvalue(@QueryParameter String value)
+              throws IOException, ServletException {
 
             return FormValidation.ok();
-        }
+      }
 
 
         public boolean isApplicable(Class<? extends AbstractProject> aClass) {
